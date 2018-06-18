@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>STOCKSMASH | Ideas </title>
+</head>
+<body>
+	<h2>STOCKSMASH | Ideas </h2>
+
+	<table>
+		<thead>
+			<tr>
+				<th>STOCK SYMBOL</th>
+				<th>BUY PRICE</th>
+				<th>BUY TIMESTAMP</th>
+				<th>TARGET PRICE</th>
+				<th>STOP LOSS</th>
+				<th>TRADE END DATE</th>
+
+			</tr>
+		</thead>
+		<tbody>
+			{%for idea in object_list %}
+			<tr>
+				<td>{{idea.tickersymbol}}</td>
+				<td>{{idea.buyprice}}</td>
+				<td>{{idea.buytimestamp}}</td>
+				<td>{{idea.targetprice}}</td>
+				<td>{{idea.stoplossprice}}</td>
+				<td>{{idea.tradeenddate}}</td>
+			</tr>
+				{% endfor %}
+		</tbody>
+	</table>
+
+	
+</body>
+</html>

@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Welcome to StockSmash</title>
+</head>
+<body>
+<h1>Welcome to Stock Smash</h1>
+{{something}}
+<p>Stock Quotes Updated at <i>{{timestamp}}</i></p>
+{% for key,value in stockdict.items %}
+<p>{{key}}::{{value}}</p>
+{% endfor %}
+</body>
+</html>
