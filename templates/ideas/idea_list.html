@@ -1,12 +1,8 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>STOCKSMASH | Ideas </title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% block content %}
 	<h2>STOCKSMASH | Ideas </h2>
 
-	<table>
+	<table class="table table-striped table-dark">
 		<thead>
 			<tr>
 				<th>STOCK SYMBOL</th>
@@ -15,6 +11,7 @@
 				<th>TARGET PRICE</th>
 				<th>STOP LOSS</th>
 				<th>TRADE END DATE</th>
+				<th>USER ID</th>
 
 			</tr>
 		</thead>
@@ -27,11 +24,10 @@
 				<td>{{idea.targetprice}}</td>
 				<td>{{idea.stoplossprice}}</td>
 				<td>{{idea.tradeenddate}}</td>
+				<td>{{idea.user}}</td>
 			</tr>
 				{% endfor %}
 		</tbody>
 	</table>
 
-	
-</body>
-</html>
+{% endblock %}

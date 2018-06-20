@@ -1,9 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>STOCKSMASH | Ideas </title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% block content %}
+
 	<h2>STOCKSMASH | Ideas | Idea Detail </h2>
 
 	{{idea.tickersymbol}} &nbsp
@@ -14,6 +11,4 @@
 				{{idea.tradeenddate}}&nbsp<br>
 				<p>{{idea.shortthesis}}</p>
 				<p>{{idea.longthesis}}</p>
-
-</body>
-</html>
+{% endblock %}

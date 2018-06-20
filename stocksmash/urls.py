@@ -15,13 +15,16 @@ Including another URLconf
 """
 from django.conf.urls import url,include
 from django.contrib import admin
-from stocks.views import IndexView
+from stocks.views import IndexView,SignUpView
+from django.contrib.auth import views
 
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$',IndexView.as_view(),name='index'),
-    url(r'^ideas/',include('ideas.urls',namespace='ideas'))
-
+    url(r'^ideas/',include('ideas.urls',namespace='ideas')),
+    url(r'^login/',views.LoginView.as_view(),name='login'),
+    url(r'^logout/', views.LogoutView.as_view(next_page='index'), name='logout'),
+    url(r'^signup/', SignUpView.as_view(), name='signup'),
 
 ]

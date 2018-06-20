@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Login</title>
+</head>
+<body>
+	<form action="{% url 'login' %}" method='POST'>
+		{% csrf_token %}
+	{{form.as_p}}
+	<input type="submit" name="">
+	<input type="hidden" name="next" value="{% url 'index' %}">
+	</form>
+</body>
+</html>

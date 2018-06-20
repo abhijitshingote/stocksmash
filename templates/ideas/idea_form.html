@@ -1,14 +1,9 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title> STOCKSMASH | Post your Idea! </title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% block content %}
 <h2> STOCKSMASH | Ideas | Post! </h2>
 <form action="{% url 'ideas:create' %}" method='POST'>
 	{% csrf_token %}
 	{{form.as_p}}
 	<input type="submit" value="submit">
 </form>
-</body>
-</html>
+{% endblock %}

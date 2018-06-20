@@ -1,6 +1,10 @@
 from django.db import models
 from django.shortcuts import reverse
+from django.conf import settings
 # Create your models here.
+
+User=settings.AUTH_USER_MODEL
+
 class Idea(models.Model):
 
 	tickersymbol=models.ForeignKey('stocks.Stock',on_delete=models.CASCADE)
@@ -11,6 +15,7 @@ class Idea(models.Model):
 	stoplossprice=models.DecimalField(decimal_places=2,max_digits=9)
 	shortthesis=models.TextField(max_length=100)
 	longthesis=models.TextField()
+	user=models.ForeignKey(User,on_delete=models.CASCADE)
 	created=models.DateField(auto_now_add=True)
 	updated=models.DateField(auto_now=True)
 
