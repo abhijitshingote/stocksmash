@@ -3,7 +3,9 @@ from django.views.generic import (ListView,DetailView,
 	CreateView,UpdateView)
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Idea
+from stocks.models import Stock
 from .forms import IdeaForm
+from django.shortcuts import get_object_or_404
 # Create your views here.
 
 class IdeaListView(ListView):
@@ -33,5 +35,10 @@ class IdeaCreateView(LoginRequiredMixin,CreateView):
 	# 	kwargs['user']=self.request.user
 	# 	return kwargs
 
+class IdeabyStockView(ListView):
+
+	def get_queryset(self):
+		ticker=get_object_or_404(Stock,tickersymbol=self.kwargs['ticker'])
+		return Idea.objects.filter(tickersymbol=ticker)
 
 

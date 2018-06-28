@@ -2,7 +2,7 @@
 {% block content %}
 	<h2>STOCKSMASH | Ideas </h2>
 
-	<table class="table table-striped table-dark">
+	<table class="table table-striped table-dark table-sm">
 		<thead>
 			<tr>
 				<th>STOCK SYMBOL</th>
@@ -18,13 +18,15 @@
 		<tbody>
 			{%for idea in object_list %}
 			<tr>
-				<td>{{idea.tickersymbol}}</td>
+
+				<td><a href="{% url 'ideas:ideasbystock' idea.tickersymbol.tickersymbol %}">{{idea.tickersymbol}}</a></td>
 				<td>{{idea.buyprice}}</td>
 				<td>{{idea.buytimestamp}}</td>
 				<td>{{idea.targetprice}}</td>
 				<td>{{idea.stoplossprice}}</td>
 				<td>{{idea.tradeenddate}}</td>
 				<td>{{idea.user}}</td>
+			
 			</tr>
 				{% endfor %}
 		</tbody>

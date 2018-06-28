@@ -1,9 +1,11 @@
 {% extends 'base.html' %}
+
 {% block content %}
+{% load crispy_forms_tags %}
 <h2> STOCKSMASH | Ideas | Post! </h2>
 <form action="{% url 'ideas:create' %}" method='POST'>
 	{% csrf_token %}
-	{{form.as_p}}
+	{{form | crispy}}
 	<input type="submit" value="submit">
 </form>
 {% endblock %}
