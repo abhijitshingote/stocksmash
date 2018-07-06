@@ -6,11 +6,13 @@
 		<thead>
 			<tr>
 				<th>STOCK SYMBOL</th>
+				<th>COMPANY</th>
 				<th>BUY PRICE</th>
 				<th>BUY TIMESTAMP</th>
 				<th>TARGET PRICE</th>
 				<th>STOP LOSS</th>
 				<th>TRADE END DATE</th>
+				<th>TRADE DETAIL</th>
 				<th>USER ID</th>
 
 			</tr>
@@ -20,16 +22,39 @@
 			<tr>
 
 				<td><a href="{% url 'ideas:ideasbystock' idea.tickersymbol.tickersymbol %}">{{idea.tickersymbol}}</a></td>
+				<td>{{idea.tickersymbol.tickername}}</td>
 				<td>{{idea.buyprice}}</td>
 				<td>{{idea.buytimestamp}}</td>
 				<td>{{idea.targetprice}}</td>
 				<td>{{idea.stoplossprice}}</td>
 				<td>{{idea.tradeenddate}}</td>
+				<td><a href="{% url 'ideas:ideadetail' idea.pk %}">detail
+				</a></td>
 				<td>{{idea.user}}</td>
 			
 			</tr>
 				{% endfor %}
 		</tbody>
 	</table>
-
+{% if is_paginated %}
+  <ul class="pagination">
+    {% if page_obj.has_previous %}
+      <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">&laquo;</a></li>
+    {% else %}
+      <li class="disabled"><span>&laquo;</span></li>
+    {% endif %}
+    {% for i in paginator.page_range %}
+      {% if page_obj.number == i %}
+        <li class="active page-item"><span class="page-link">{{ i }} <span class="sr-only">(current)</span></span></li>
+      {% else %}
+        <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+      {% endif %}
+    {% endfor %}
+    {% if page_obj.has_next %}
+      <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">&raquo;</a></li>
+    {% else %}
+      <li class="disabled page-item"><span>&raquo;</span></li>
+    {% endif %}
+  </ul>
+{% endif %}
 {% endblock %}

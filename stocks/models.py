@@ -4,6 +4,7 @@ from django.db import models
 class Stock(models.Model):
 
 	tickersymbol=models.CharField(max_length=6)
+	tickername=models.CharField(max_length=300)
 	created=models.DateField(auto_now_add=True)
 	updated=models.DateField(auto_now=True)
 

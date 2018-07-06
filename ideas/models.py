@@ -25,3 +25,13 @@ class Idea(models.Model):
 
 	def get_absolute_url(self):
 		return reverse('ideas:ideadetail',kwargs={'pk': self.pk})
+
+class Comment(models.Model):
+	comment_text=models.TextField()
+	user=models.ForeignKey(User)
+	idea=models.ForeignKey(Idea)
+	created=models.DateTimeField(auto_now_add=True)
+	updated=models.DateTimeField(auto_now=True)
+
+	def __str__(self):
+		return self.comment_text[:20]

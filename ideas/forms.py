@@ -1,4 +1,4 @@
-from .models import Idea
+from .models import Idea,Comment
 from django.forms import ModelForm
 
 class IdeaForm(ModelForm):
@@ -9,3 +9,12 @@ class IdeaForm(ModelForm):
 		fields = ['tickersymbol','buyprice','targetprice','tradeenddate',
 		'stoplossprice','shortthesis','longthesis',
 		]	
+
+
+
+class CommentForm(ModelForm):
+
+	class Meta:
+
+		model=Comment
+		fields=['comment_text']

@@ -11,4 +11,20 @@
 				{{idea.tradeenddate}}&nbsp<br>
 				<p>{{idea.shortthesis}}</p>
 				<p>{{idea.longthesis}}</p>
+
+
+
+<div class="form-group">
+	<form action="{% url 'ideas:ideadetail' idea.pk %}" method="POST">
+		{% csrf_token %}
+	  	<label>Comment:</label>
+	  	<textarea class="form-control" rows="5" name="comment"></textarea>
+  		<input type="submit">
+	</form>
+</div>
+
+
+{% for comment in comments %}
+<p>{{comment.comment_text}} - {{comment.user.username}} | {{comment.created}}</p>
+{% endfor %}
 {% endblock %}
