@@ -14,6 +14,7 @@ class IdeaListView(ListView):
 
 	model=Idea
 	paginate_by=25
+	ordering=['-created']
 
 	# def get_context_data(self,**kwargs):
 	# 	context=super(IdeaListView,self).get_context_data(**kwargs)

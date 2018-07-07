@@ -1,16 +1,61 @@
 {% extends 'base.html' %}
 {% block content %}
 
-	<h2>STOCKSMASH | Ideas | Idea Detail </h2>
+<style type="text/css">
+	h2 {
+		padding:25px 0;
+	}
 
-	{{idea.tickersymbol}} &nbsp
-		{{idea.buyprice}}&nbsp
-			{{idea.buytimestamp}}&nbsp
-				{{idea.targetprice}}&nbsp
-				{{idea.stoplossprice}}&nbsp
-				{{idea.tradeenddate}}&nbsp<br>
-				<p>{{idea.shortthesis}}</p>
-				<p>{{idea.longthesis}}</p>
+	.price {
+		font-size: 50px;
+		margin: 0 auto;
+		text-align: center;
+		color: green;
+	}
+
+	i {
+		font-size: 20px;
+		padding:50%;
+
+	}
+	label {
+			font-size: 25px;
+			text-transform: uppercase;
+	}
+	.col-lg-3 {
+		text-align: center;
+		margin-bottom: 25px;
+	}
+
+	.tradeenddate {
+		font-size: 40px;
+	}
+
+	.stoploss {
+		color: red;
+	}
+</style>
+
+<h2>{{idea.long_short}}  {{idea.tickersymbol.tickername}}({{idea.tickersymbol.tickersymbol}})<i>Trade Activated - {{idea.buytimestamp}}</i></h2>
+<div class="row">
+	<div class="col-lg-3">
+		<label>Buy Price</label><br><span class="price">{{idea.buyprice}}</span> 
+	</div>
+	<div class="col-lg-3">
+		<label>Target Price</label><br><span class="price">{{idea.targetprice}}</span>
+	</div>
+	<div class="col-lg-3">
+		<label>Target Ends</label><br><span class="tradeenddate">{{idea.tradeenddate}}</span>
+	</div>
+	<div class="col-lg-3">
+		<label>Stop Loss</label><br><span class="price stoploss">{{idea.stoplossprice}}</span>
+	</div>
+</div>
+
+<label>Short Desc: </label><p>{{idea.shortthesis}}</p>
+<label>Long Thesis: </label><p>{{idea.longthesis}}</p>
+	
+
 
 
 
@@ -18,13 +63,15 @@
 	<form action="{% url 'ideas:ideadetail' idea.pk %}" method="POST">
 		{% csrf_token %}
 	  	<label>Comment:</label>
-	  	<textarea class="form-control" rows="5" name="comment"></textarea>
+	  	<textarea class="form-control" rows="2" name="comment"></textarea>
   		<input type="submit">
 	</form>
 </div>
 
 
 {% for comment in comments %}
-<p>{{comment.comment_text}} - {{comment.user.username}} | {{comment.created}}</p>
+<strong>{{comment.user.username}}</strong>| {{comment.created}}
+<p>{{comment.comment_text}} }</p>
+<br>
 {% endfor %}
 {% endblock %}

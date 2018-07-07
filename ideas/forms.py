@@ -6,7 +6,7 @@ class IdeaForm(ModelForm):
 	class Meta:
 		
 		model = Idea
-		fields = ['tickersymbol','buyprice','targetprice','tradeenddate',
+		fields = ['tickersymbol','long_short','buyprice','targetprice','tradeenddate',
 		'stoplossprice','shortthesis','longthesis',
 		]	
 

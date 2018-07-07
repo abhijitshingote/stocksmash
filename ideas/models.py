@@ -8,6 +8,7 @@ User=settings.AUTH_USER_MODEL
 class Idea(models.Model):
 
 	tickersymbol=models.ForeignKey('stocks.Stock',on_delete=models.CASCADE)
+	long_short=models.CharField(max_length=5,blank=False,choices=(('LONG','LONG'),('SHORT','SHORT')))
 	buyprice=models.DecimalField(decimal_places=2,max_digits=9)
 	buytimestamp=models.DateField(auto_now=True)
 	targetprice=models.DecimalField(decimal_places=2,max_digits=9)
